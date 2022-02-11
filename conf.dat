@@ -1,0 +1,10 @@
+REMOTE_URL
+https://github.com/StazioneMeteoCocito/dati/archive/refs/heads/main.zip
+ZIP
+station.zip
+DELETE_ZIP
+1
+PATH
+dati-main
+REPORT
+report.txt
