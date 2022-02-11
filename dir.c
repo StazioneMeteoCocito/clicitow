@@ -34,14 +34,21 @@ int dirMenu(char * path, char * result) {
 void readf(FILE *f){
     ft_table_t *table = ft_create_table();
     ft_set_cell_prop(table, 0, FT_ANY_COLUMN, FT_CPROP_ROW_TYPE, FT_ROW_HEADER);
-    char time[100];
-    char val[100];
+    char * token;
+    char time[200];
+    char value[200];
+    char row[400];
     ft_write_ln(table, "N", "Data ed Ora", "Valore");
     int i = 1;
     char l[10];
-    while(fscanf(f, "%[^,],%[^,]", time, val)!=EOF){
+    while(!feof(f)){
+        fgets(row, 400, f);
+        token = strtok(row,",");
+        sprintf(time,"%s",token);
+        token = strtok(NULL, ",");
+        sprintf(value,"%s",token);
         sprintf(l,"%d",i);
-        ft_write_ln(table, l, time, val);
+        ft_write_ln(table, l, time, value);
         i++;
     }
     printf("%s",ft_to_string(table));
