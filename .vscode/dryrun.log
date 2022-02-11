@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/mattia/clicitow'
+gcc main.c -o main -lcurl -g
+make: Leaving directory '/home/mattia/clicitow'
+ 

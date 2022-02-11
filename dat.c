@@ -1,13 +1,32 @@
+/**
+ * @file dat.c
+ * @author Mattia Mascarello (mattia.mascarello@outlook.it)
+ * @brief fetch data from dat file
+ * @version 0.1
+ * @date 2022-02-11
+ *
+ * @copyright  2022, The MIT License
+ *
+ */
 #include "trim.c"
+/**
+ * @brief Configuration file string
+ * 
+ */
 typedef struct CONF{
     char REMOTE_URL[300];
     char ZIP[300];
     int DELETE_ZIP;
     char PATH[300];
     char REPORT[300];
+    char JSONFILE[300];
 } CONF;
-
-
+/**
+ * @brief Load configuration file from path
+ * 
+ * @param path 
+ * @return CONF 
+ */
 CONF loadConf(char * path){
     CONF conf;
     FILE *f;
@@ -30,10 +49,18 @@ CONF loadConf(char * path){
     fgets(oid,300,f);
     fgets(conf.REPORT,300,f);
     sprintf(oid,"%s",trim(conf.REPORT));
-    sprintf(conf.REPORT,"%s",oid);
+    sprintf(conf.REPORT, "%s", oid);
+    fgets(oid, 300, f);
+    fgets(conf.JSONFILE, 300, f);
+    sprintf(oid, "%s", trim(conf.JSONFILE));
+    sprintf(conf.JSONFILE, "%s", oid);
     return conf;
 }
-
+/**
+ * @brief Dumps configuration
+ * 
+ * @param conf Configuration
+ */
 void dump_conf(CONF conf){
     printf("\nREMOTE_URL = %s\nZIP= %s\nDELETE_ZIP = %d\nPATH = %s\n",conf.REMOTE_URL,conf.ZIP,conf.DELETE_ZIP,conf.PATH);
 }

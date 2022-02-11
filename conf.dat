@@ -8,3 +8,5 @@ PATH
 dati-main
 REPORT
 report.txt
+JSONFILE
+last.json
